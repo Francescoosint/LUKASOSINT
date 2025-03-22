@@ -3,7 +3,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-# Функция для отображения логотипа
+
 def logo():
     os.system("clear" if os.name == "posix" else "cls")
     print(r"""
@@ -23,7 +23,7 @@ def logo():
 ═════════════════════════════
     """)
 
-# Список соцсетей для поиска
+
 SOCIAL_MEDIA = {
     "VK": "https://vk.com/{}",
     "Telegram": "https://t.me/{}",
@@ -40,7 +40,7 @@ SOCIAL_MEDIA = {
     "Medium": "https://medium.com/@{}"
 }
 
-# Функция парсинга доп. данных
+
 def get_additional_info(platform, url):
     try:
         response = requests.get(url, timeout=5)
@@ -62,7 +62,7 @@ def get_additional_info(platform, url):
     except Exception:
         return "No additional data available"
 
-# Функция поиска по никнейму
+
 def search_username(username):
     print("\n🔍 Searching...\n")
     found_profiles = []
@@ -82,11 +82,11 @@ def search_username(username):
         except requests.exceptions.RequestException:
             found_profiles.append(f"⚠ {platform}: Connection error")
 
-    # Вывод всех найденных профилей
+    
     for profile in found_profiles:
         print(profile)
 
-    # Вывод доп. информации в самом конце
+    
     if additional_info:
         print("\n📜 Additional Information:")
         for info in additional_info:
@@ -94,7 +94,7 @@ def search_username(username):
     else:
         print("\n📜 Additional Information: No additional data available")
 
-# Главное меню
+
 def main_menu():
     while True:
         logo()
